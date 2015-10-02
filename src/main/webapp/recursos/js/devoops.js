@@ -2292,7 +2292,7 @@ function AllTimePickers(){
 	$('#date_example').datepicker({});*/
 	
 	
-	$('#dataInicio').datepicker({ numberOfMonths: 3, showButtonPanel: true});	
+	$('#dataFim').datepicker({ numberOfMonths: 3, showButtonPanel: true});	
 }
 
 function AllSelect2(){
@@ -2316,6 +2316,9 @@ $(document).ready(function () {
 		$('div#main').toggleClass('sidebar-show');
 		setTimeout(MessagesMenuWidth, 250);
 	});
+	
+	
+	$('#dataFim').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	
 	/*
 	var ajax_url = location.hash.replace(/^#/, '');

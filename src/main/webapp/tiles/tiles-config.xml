@@ -36,4 +36,8 @@
     	<put-attribute name="conteudo">/views/ordem/listar.jsp</put-attribute>
     </definition>
     
+    <definition name="ordem/visualizar" extends="main">
+    	<put-attribute name="conteudo">/views/ordem/visualizar.jsp</put-attribute>
+    </definition>
+    
 </tiles-definitions>

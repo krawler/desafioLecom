@@ -26,7 +26,7 @@
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-2">
 					<thead>
 						<tr>
-							<th>Nome</th>
+							<th width="50%">Nome</th>
 							<th>Endereço</th>
 							<th>Ações</th>				
 						</tr>
@@ -40,8 +40,8 @@
 									<table>
 										<tr>
 										   <td><a href="<c:url value="/ordem/ordens-cliente/${cliente.id}"/>" class="btn btn-default">Serviços</a></td>
-										   <td><a href="<c:url value="/cliente/cadastro/${cliente.id}"/>" class="btn btn-default">Editar</a></td>
-										   <td><a href="<c:url value="/cliente/excluir/${cliente.id}"/>" class="btn btn-default">Excluir</a></td>	
+										   <td><a href="<c:url value="/cliente/cadastro/${cliente.id}"/>" class="btn btn-default btn-margin-left">Editar</a></td>
+										   <td><a href="<c:url value="/cliente/excluir/${cliente.id}"/>" class="btn btn-danger btn-margin-left">Excluir</a></td>	
 										</tr>
 									</table>
 								</td>

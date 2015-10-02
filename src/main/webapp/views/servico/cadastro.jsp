@@ -27,16 +27,6 @@
 			</sf:select>
 		</div>
 	</div>
-	
-	<div class="form-group col-sm-12">
-		<label for="dataFim" class="col-sm-1 control-label"> <sf:errors
-				cssClass="has-error" path="dataFim" /> Data final
-		</label>
-		<div class="col-sm-5">
-			<sf:input path="dataFim" class="form-control"/>
-		</div>
-	</div>
-	
 	<div class="form-group col-sm-1 col-sm-offset-2 right">
 		<a href="/listar" class="btn btn-primary">Voltar</a>
 	</div>

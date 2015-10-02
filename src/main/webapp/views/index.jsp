@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 
-<h4>Ultimas ordens adicionadas</h4>
+<h4>Ultimas ordens de serviço adicionadas</h4>
 <a href="<c:url value="/ordem/cadastro"/>" class="btn btn-default">Nova Ordem de serviço</a>
 
 <div class="col-sm-5">

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,17 +23,14 @@ public class Servico implements Serializable {
 	private Long id;
 	@Column
 	private String descricao;
-	@ManyToMany(mappedBy="servicos")
-	private List<OrdemServico> ordens;
 	
 	public Servico(){
 	}
 
-	public Servico(Long id, String descricao, List<OrdemServico> ordens) {
+	public Servico(Long id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
-		this.ordens = ordens;
 	}
 
 	public Long getId() {

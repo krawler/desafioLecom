@@ -1,5 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false"%>
 
 <div class="row">
@@ -7,12 +8,14 @@
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">
-					<div class="col-xs-8">
+					<div class="col-xs-4">
+						<a href="<c:url value="/ordem/cadastro"/>" class="btn btn-default">Nova
+						ordem de serviço</a>
+					</div>	
+					<div class="col-xs-4">
 						<span><h4 style="margin-top: 6px;">Listagem de Ordens
 								de Serviço</h4></span>
 					</div>
-					<a href="<c:url value="/ordem/cadastro"/>" class="btn btn-default">Nova
-						ordem de serviço</a>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
@@ -28,31 +31,30 @@
 					id="datatable-2">
 					<thead>
 						<tr>
-							<th>Cliente</th>
-							<th>Serviço</th>
+							<th width="40%">Cliente</th>
+							<th>Data Inicio</th>
+							<th>Data Fim</th>
+							<th>Dias Restantes</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${ordens}" var="ordem">
-							<c:forEach items="${ordem.servicos}" var="servico">
-								<tr>
-									<td>${ordem.cliente.nome}</td>
-									<td>${servico.descricao}</td>
-									<td>
-										<table>
-											<tr>
-												<td><a
-													href="<c:url value="/ordem/cadastro/${ordem.id}"/>"
-													class="btn btn-default">Editar</a></td>
-												<td><a
-													href="<c:url value="/ordem/excluir/${ordem.id}"/>"
-													class="btn btn-default">Excluir</a></td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</c:forEach>
+						<c:forEach items="${ordens}" var="ordem">							
+							<tr>
+								<td>${ordem.cliente.nome}</td>
+								<td><fmt:formatDate pattern="dd/MM/yyyy" value="${ordem.dataInicio}"/></td>
+								<td>${ordem.dataFim}</td>
+								<td class="center">${ordem.diasRestantes}</td>
+								<td>
+									<table>
+										<tr>
+											<td><a
+												href="<c:url value="/ordem/visualizar/${ordem.id}"/>"
+												class="btn btn-default btn-margin-left">Visualizar/Finalizar</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>						
 						</c:forEach>
 					</tbody>
 					<tfoot>

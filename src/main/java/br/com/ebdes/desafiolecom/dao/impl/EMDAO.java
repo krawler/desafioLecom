@@ -24,7 +24,24 @@ public abstract class EMDAO<T> implements DAOBase<T> {
 		return getEntityManagerFactory().createEntityManager();
 	}
 	
+	public EntityManagerFactory getEntityManagerFactory() {
+		return emf;
+	}
+
+	public void setSessionFactory(EntityManagerFactory emf) {
+		this.emf = emf;
+	}
+	
 	protected abstract Class getClazz();
+	
+
+	public void persistir(T objeto) {
+		getEntityManager().merge(objeto);
+	}
+
+	public void excluir(T objeto) {
+		getEntityManager().remove(objeto);
+	}
 	
 	public List<T> list(int offset, int max){
 		List<T> result = (List<T>) getEntityManager()
@@ -35,26 +52,15 @@ public abstract class EMDAO<T> implements DAOBase<T> {
 		
 		return (result != null ? result : new ArrayList<T>());
 	}
-
-	public void persistir(T objeto) {
-		getEntityManager().merge(objeto);
-	}
-
-	public void excluir(T objeto) {
-		getEntityManager().remove(objeto);
+	
+	public List<T> listAll(){
+		return (List<T>) getEntityManager()
+							.createQuery("from "+getClass().getName())
+							.getResultList(); 
 	}
 
 	public T get(Long id) {
 		return (T) getEntityManager().getReference(getClazz(), id);
 	}	
-	
-	public EntityManagerFactory getEntityManagerFactory() {
-		return emf;
-	}
-
-	public void setSessionFactory(EntityManagerFactory emf) {
-		this.emf = emf;
-	}
-
 }
 

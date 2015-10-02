@@ -2,6 +2,25 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
 
+<div class="box-header form-incluir-listagem">
+	<sf:form modelAttribute="servico" action="incluir" method="POST">
+
+		<div class="form-group col-sm-12">
+			<label for="descricao" class="col-sm-1 control-label"> <sf:errors
+					cssClass="has-error" path="descricao" /> Descrição:
+			</label>
+			<div class="col-sm-7">
+				<sf:input path="descricao" class="form-control" />
+			</div>
+			<div class="col-sm-3">
+				<button type="submit" class="btn btn-primary">Incluir</button>
+			</div>
+		</div>
+
+	</sf:form>
+
+</div>
+
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
@@ -19,24 +38,6 @@
 				</div>
 				<div class="no-move"></div>
 			</div>
-			<div class="box-header form-incluir-listagem">
-				<sf:form modelAttribute="servico" action="incluir" method="POST">
-
-					<div class="form-group col-sm-12">
-						<label for="descricao" class="col-sm-1 control-label"> <sf:errors
-								cssClass="has-error" path="descricao" /> Descrição:
-						</label>
-						<div class="col-sm-7">
-							<sf:input path="descricao" class="form-control" />
-						</div>
-						<div class="col-sm-3">
-							<button type="submit" class="btn btn-primary">Incluir</button>
-						</div>
-					</div>
-					
-				</sf:form>
-
-			</div>
 			<div class="box-content no-padding table-responsive">
 				<table
 					class="table table-bordered table-striped table-hover table-heading table-datatable"
@@ -44,12 +45,14 @@
 					<thead>
 						<tr>
 							<th>Descrição</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${servicos}" var="servico">
 							<tr>
 								<td>${servico.descricao}</td>
+								<td><a href="excluir/${servico.id}" class="btn btn-danger">Excluir</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

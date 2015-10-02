@@ -1,5 +1,7 @@
 package br.com.ebdes.desafiolecom.controladores;
 
+import java.util.List;
+
 import javax.websocket.server.PathParam;
 import javax.validation.Valid;
 
@@ -11,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ebdes.desafiolecom.dao.DAOCliente;
+import br.com.ebdes.desafiolecom.dao.DAOOrdemServico;
+import br.com.ebdes.desafiolecom.dao.DAOServico;
 import br.com.ebdes.desafiolecom.entidades.Cliente;
+import br.com.ebdes.desafiolecom.entidades.OrdemServico;
 
 @Controller
 @RequestMapping("/cliente")
@@ -50,17 +55,8 @@ public class ClienteController {
 	public String excluir(@PathVariable("id") Long id){
 		Cliente cliente = daoCliente.get(id);
 		daoCliente.excluir(cliente);
-		return "redirect:listar";
+		return "redirect:../listar";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

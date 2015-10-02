@@ -32,7 +32,6 @@ import br.com.ebdes.desafiolecom.entidades.OrdemServico;
 import br.com.ebdes.desafiolecom.entidades.Servico;
 
 @Controller
-@SessionAttributes("ordemServico")
 public class OrdemServicoController {
 	
 	@Autowired
@@ -56,48 +55,46 @@ public class OrdemServicoController {
 		return "ordem/listar";
 	}
 	
+	@RequestMapping("ordem/ordens-cliente/{id}")
+	public String listarPorCliente(Map<String, Object> model, @PathVariable("id") Long id){
+		Cliente cliente = daoCliente.get(id);
+		model.put("ordens", daoOrdemServico.getOrdensByCliente(cliente));
+		return "ordem/listar";
+	}
+	
 	@RequestMapping("ordem/cadastro")
 	public String cadastro(Map<String, Object> model){
-		//ordemServico = new OrdemServico();
+
 		if(model.get("ordemServico") == null){
-		   OrdemServico os = new OrdemServico();
-		   
+		   OrdemServico os = new OrdemServico();		   
 		   model.put("ordemServico", os);
 		}
-		model.put("clientes", daoCliente.list(0, 100));
-		model.put("servicos", daoServico.list(0, 100));
-		//mav.addObject("clientes", daoCliente.list(0,100));
-		///mav.addObject("servicos", daoServico.list(0, 100));
-		//mav.addObject("ordemServico", ordemServico);
+		model.put("clientes", daoCliente.list(0, 500));
+		model.put("servicos", daoServico.list(0, 500));
+
 		return "ordem/cadastro";
 	}
 	
-	@RequestMapping("ordem/cadastro/{id}")
-	public String cadastro(@PathVariable("id") Long id, Map<String, Object> model){
+	@RequestMapping("ordem/visualizar/{id}")
+	public String visualizar(@PathVariable("id") Long id, Map<String, Object> model){
 		
 		model.put("ordemServico", daoOrdemServico.get(id));
-		//mav.setViewName("ordem/cadastro");
 		
-		return "ordem/cadastro";
-	}
-	
-	@RequestMapping("ordem/addservico/{id}")
-	public void addServico(@PathVariable("id") Long id, HttpSession sessao){
-		Servico servico = daoServico.get(id);
-		if(sessao.getAttribute("servicos") == null){
-		   servicos = new ArrayList<Servico>();
-		   sessao.setAttribute("servicos", servicos);
-		}		
-		List<Servico> servicos = (List<Servico>) sessao.getAttribute("servicos");
-		servicos.add(servico);
-		sessao.setAttribute("servicos", servicos);
+		return "ordem/visualizar";
 	}
 	
 	@RequestMapping(value="ordem/incluir",method=RequestMethod.POST)
 	public String incluir(@Valid OrdemServico ordemServico, BindingResult result, HttpSession sessao){
 	
-		//ordemServico.setServicos(servicos);
+		ordemServico.setDataInicio(new Date());
 		
+		daoOrdemServico.persistir(ordemServico);
+		return "redirect:listar";
+	}
+	
+	@RequestMapping(value="ordem/finalizar",method=RequestMethod.POST)
+	public String finalizar(@Valid OrdemServico ordemServico, BindingResult result, HttpSession sessao){
+		ordemServico.setDataFim(new Date());
 		daoOrdemServico.persistir(ordemServico);
 		return "redirect:listar";
 	}

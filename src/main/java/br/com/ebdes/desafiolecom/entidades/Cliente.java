@@ -2,8 +2,10 @@ package br.com.ebdes.desafiolecom.entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ public class Cliente implements java.io.Serializable{
 	private String nome;
 	@Column
 	private String endereco;
-	@OneToMany @Column(nullable=true)
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.MERGE)
 	private List<OrdemServico> ordens;
 	
 	public Cliente(){
