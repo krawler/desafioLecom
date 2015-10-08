@@ -1,4 +1,4 @@
-package br.com.ebdes.desafiolecom.impl.hibernate;
+package br.com.ebdes.desafiolecom.dao.impl.hibernate;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

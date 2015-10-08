@@ -1,4 +1,4 @@
-package br.com.ebdes.desafiolecom.impl.hibernate;
+package br.com.ebdes.desafiolecom.dao.impl.hibernate;
 
 import java.util.List;
 
@@ -44,6 +44,10 @@ public abstract class HBDAO<T> implements DAOBase<T> {
 		return (List<T>) getSession().createCriteria(getClazz())
 						   .setMaxResults(max)
 						   .setFirstResult(offset).list();
+	}
+	
+	public List<T> listAll(){
+		return (List<T>) getSession().createCriteria(getClazz()).list(); 
 	}
 
 	
