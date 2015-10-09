@@ -13,7 +13,7 @@
 	
 	<context:component-scan base-package="br.com.ebdes.desafiolecom"/>
 	
-	<mvc:resources location="/recursos/" mapping="/recursos/**" cache-period="200"/>
+	<mvc:resources location="recursos/" mapping="recursos/**" cache-period="200"/>
 	
 	<!-- viewresolver/tiles -->
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">

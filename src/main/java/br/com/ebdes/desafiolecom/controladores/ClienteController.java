@@ -1,6 +1,7 @@
 package br.com.ebdes.desafiolecom.controladores;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.websocket.server.PathParam;
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ import br.com.ebdes.desafiolecom.entidades.OrdemServico;
 @Controller
 @RequestMapping("/cliente")
 public class ClienteController {
+	
+	private static Logger logger = Logger.getLogger("ClienteController");
 	
 	@Autowired
 	private DAOCliente daoCliente;
