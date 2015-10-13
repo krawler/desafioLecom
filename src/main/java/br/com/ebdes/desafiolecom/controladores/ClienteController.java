@@ -36,8 +36,10 @@ public class ClienteController {
 	
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(){
-		return new ModelAndView("cliente/cadastro")
-					.addObject("cliente", new Cliente());
+		ModelAndView mav = new ModelAndView("cliente/cadastro");
+		mav.getModel().put("cliente", new Cliente());
+		mav.getModel().put("campo", "");
+		return mav;
 	}
 	
 	@RequestMapping("/cadastro/{id}")
@@ -49,7 +51,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value="/incluir", method=RequestMethod.POST)
-	public String incluir(@Valid Cliente cliente){
+	public String incluir(@Valid Cliente cliente, String campo){
 		daoCliente.persistir(cliente);
 		return "redirect:listar";
 	}

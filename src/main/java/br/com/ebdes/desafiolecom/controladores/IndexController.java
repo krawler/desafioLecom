@@ -20,7 +20,6 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public ModelAndView index(){
-		logger.log(Level.INFO, "passando pelo //");
 		return new ModelAndView("index")
 					.addObject("ordens", daoOrdemServico.list(0,20));
 	}

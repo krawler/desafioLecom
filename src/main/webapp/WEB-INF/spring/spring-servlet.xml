@@ -9,7 +9,7 @@
 
 	<mvc:annotation-driven/>
 	
-	<context:annotation-config/>
+	<!-- <context:annotation-config/> -->
 	
 	<context:component-scan base-package="br.com.ebdes.desafiolecom"/>
 	

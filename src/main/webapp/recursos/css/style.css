@@ -2392,3 +2392,16 @@ td.beauty-hover {
 .btn-margin-left{
 	margin-left:20px;
 }
+
+.sem-padding-esquerda{
+	padding-left: 0px;
+}
+
+.sem-margin-esquerda{
+	margin-left:0%;
+}
+
+
+.marginTop{
+	margin-top: 8px;	
+}
