@@ -6,11 +6,12 @@
 <sf:form modelAttribute="ordemServico" action="incluir" method="POST">
 
 	<div class="form-group col-sm-12">
-		<label for="cliente" class="col-sm-1 control-label"> <sf:errors
-				cssClass="has-error" path="cliente" /> Cliente
+		<label for="cliente" class="col-sm-1 control-label"> 
+		  <sf:errors	cssClass="has-error" path="cliente" /> 
+		  Cliente
 		</label>
 		<div class="col-sm-5">
-			<sf:select path="cliente" class="form-control">
+			<sf:select path="cliente">
 				<sf:options items="${ clientes }" itemValue="id" itemLabel="nome" />
 			</sf:select>
 		</div>
@@ -21,9 +22,8 @@
 				cssClass="has-error" path="servico" /> Serviços
 		</label>
 		<div class="col-sm-5">
-			<sf:select path="servico" class="form-control">
-				<sf:options items="${ servicos }" itemValue="id"
-					itemLabel="descricao" />
+			<sf:select path="servico">
+				<sf:options items="${ servicos }" itemValue="id" itemLabel="descricao" />
 			</sf:select>
 		</div>
 	</div>

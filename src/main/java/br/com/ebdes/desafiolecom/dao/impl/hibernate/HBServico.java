@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.ebdes.desafiolecom.dao.DAOServico;
 import br.com.ebdes.desafiolecom.entidades.Servico;
 
-@Primary
 @Repository
 public class HBServico extends HBDAO<Servico> implements DAOServico {
 

@@ -3,13 +3,16 @@ package br.com.ebdes.desafiolecom.entidades;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -23,6 +26,8 @@ public class Servico implements Serializable {
 	private Long id;
 	@Column
 	private String descricao;
+	@OneToMany(fetch=FetchType.LAZY)
+	private List<OrdemServico> ordens;
 	
 	public Servico(){
 	}
@@ -47,6 +52,14 @@ public class Servico implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public List<OrdemServico> getOrdens() {
+		return ordens;
+	}
+
+	public void setOrdens(List<OrdemServico> ordens) {
+		this.ordens = ordens;
 	}
 	
 	

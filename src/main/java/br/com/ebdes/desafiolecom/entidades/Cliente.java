@@ -60,5 +60,13 @@ public class Cliente implements java.io.Serializable{
 		this.endereco = endereco;
 	}
 	
+	public List<OrdemServico> getOrdens() {
+		return ordens;
+	}
+
+	public void setOrdens(List<OrdemServico> ordens) {
+		this.ordens = ordens;
+	}
+
 
 }

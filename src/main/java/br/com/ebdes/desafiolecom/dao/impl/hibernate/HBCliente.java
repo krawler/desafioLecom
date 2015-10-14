@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import br.com.ebdes.desafiolecom.dao.DAOCliente;
 import br.com.ebdes.desafiolecom.entidades.Cliente;
 
-@Primary
 @Repository
 public class HBCliente extends HBDAO<Cliente> implements DAOCliente {
 

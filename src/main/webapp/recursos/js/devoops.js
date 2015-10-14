@@ -1,7 +1,3 @@
-
-
-
-
 //
 //    Main script of DevOOPS v1.0 Bootstrap Theme
 //
@@ -2319,6 +2315,9 @@ $(document).ready(function () {
 	
 	
 	$('#dataFim').datepicker({ numberOfMonths: 3, showButtonPanel: true});
+	
+	$('#cliente').select2();
+	$('#servico').select2();
 	
 	/*
 	var ajax_url = location.hash.replace(/^#/, '');
