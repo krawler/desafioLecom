@@ -9,6 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.ebdes.desafiolecom.dao.DAOCliente;
 import br.com.ebdes.desafiolecom.dao.DAOOrdemServico;
@@ -17,7 +21,8 @@ import br.com.ebdes.desafiolecom.entidades.Cliente;
 import br.com.ebdes.desafiolecom.entidades.OrdemServico;
 import br.com.ebdes.desafiolecom.entidades.Servico;
 
-@Path("/ws")
+@Controller
+@RequestMapping("ws")
 public class ServicoResource {
 	
 	@Autowired
@@ -27,42 +32,32 @@ public class ServicoResource {
 	@Autowired
 	private DAOOrdemServico daoOrdemServico;
 
-	@GET
-	@Path("/servicos")
-	@Produces("application/json")
+	@RequestMapping(value="/servicos",method=RequestMethod.GET,produces="application/json")
 	public List<Servico> servicos(){
 		List<Servico> retorno = new ArrayList<Servico>();
 		retorno = daoServico.listAll(); 
 		return retorno;		
 	}
 	
-	@GET
-	@Path("/clientes")
-	@Produces("application/json")
+	@RequestMapping(value="/clientes",method=RequestMethod.GET,produces="application/json")
 	public List<Cliente> clientes(){
 		List<Cliente> retorno = new ArrayList<Cliente>();
 		retorno = daoCliente.listAll(); 
 		return retorno;		
 	}
 	
-	@GET
-	@Path("/ordens-por-cliente/{id}")
-	@Produces("application/json")
-	public List<OrdemServico> ordensPorCliente(@PathParam(value="id") String id){
+	@RequestMapping(value="/ordens-por-cliente/{id}",method=RequestMethod.GET,produces="application/json")
+	public @ResponseBody List<OrdemServico> ordensPorCliente(@PathParam(value="id") String id){
 		List<OrdemServico> retorno = new ArrayList<OrdemServico>();
 		retorno = daoOrdemServico.getOrdensByCliente(daoCliente.get(new Long(id))); 
 		return retorno;		
 	}
 	
-	@GET
-	@Path("/ordens-nao-finalizadas")
-	@Produces("application/json")
-	public List<OrdemServico> ordensNaoFinalizadas(@PathParam(value="id") String id){
+	@RequestMapping(value="/ordens-nao-finalizadas",method=RequestMethod.GET,produces="application/json")
+	public @ResponseBody List<OrdemServico> ordensNaoFinalizadas(@PathParam(value="id") String id){
 		List<OrdemServico> retorno = new ArrayList<OrdemServico>();
 		retorno = daoOrdemServico.getOrdensNaoFinalizadas(); 
 		return retorno;		
-	}
-	
-	
+	}	
 	
 }
