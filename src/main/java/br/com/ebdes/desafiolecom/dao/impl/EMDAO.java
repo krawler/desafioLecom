@@ -56,7 +56,7 @@ public abstract class EMDAO<T> implements DAOBase<T> {
 	
 	public List<T> listAll(){
 		return (List<T>) getEntityManager()
-							.createQuery("from "+getClass().getName())
+							.createQuery("from "+getClazz().getName())
 							.getResultList(); 
 	}
 	

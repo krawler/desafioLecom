@@ -3,14 +3,18 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false"%>
 
+<div class="col-xs-12 marginTop sem-padding-esquerda">
+	<a href="<c:url value="/ordem/cadastro"/>" class="btn btn-default sem-margin-esquerda">Nova
+						ordem de serviço</a>	
+</div>
+
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">
 					<div class="col-xs-4">
-						<a href="<c:url value="/ordem/cadastro"/>" class="btn btn-default">Nova
-						ordem de serviço</a>
+
 					</div>	
 					<div class="col-xs-4">
 						<span><h4 style="margin-top: 6px;">Listagem de Ordens
