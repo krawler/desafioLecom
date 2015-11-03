@@ -14,11 +14,13 @@
 		</div>
 	</div>
 	<div class="form-group col-sm-12">
-		<label for="servico" class="col-sm-1 control-label"> <sf:errors
-				cssClass="has-error" path="servico" /> Serviço
+		<label for="servicos" class="col-sm-1 control-label"> <sf:errors
+				cssClass="has-error" path="servicos" /> Serviços
 		</label>
 		<div class="col-sm-5">
-			<input type="text" disabled="disabled" value="${ordemServico.servico.descricao}" class="form-control" /> 
+			<c:forEach items="${servicos}" var="servico">
+				<input type="text" disabled="disabled" value="${servico.descricao}" class="form-control" />
+			</c:forEach> 
 		</div>
 	</div>
 	<div class="form-group col-sm-4 col-sm-offset-2 right">

@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isELIgnored="false"%>
 
 <div class="col-sm-10">
@@ -23,7 +24,7 @@
 				<c:forEach items="${ordens}" var="ordem">
 					<tr>
 						<td>${ordem.cliente.nome}</td>
-						<td>${ordem.servico.descricao}</td>
+						<td>${fn:length(ordem.servicos)} serviços</td>
 						<td><fmt:formatDate pattern="dd/MM/yyyy" value="${ordem.dataFim}" /></td>
 					</tr>
 				</c:forEach>

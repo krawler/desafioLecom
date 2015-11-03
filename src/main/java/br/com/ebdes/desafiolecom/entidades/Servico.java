@@ -26,7 +26,7 @@ public class Servico implements Serializable {
 	private Long id;
 	@Column
 	private String descricao;
-	@OneToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<OrdemServico> ordens;
 	
 	public Servico(){

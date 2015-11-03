@@ -18,11 +18,11 @@
 	</div>
 
 	<div class="form-group col-sm-12">
-		<label for="servico" class="col-sm-1 control-label"> <sf:errors
-				cssClass="has-error" path="servico" /> Serviços
+		<label for="servicos" class="col-sm-1 control-label"> <sf:errors
+				cssClass="has-error" path="servicos" /> Serviços
 		</label>
 		<div class="col-sm-5">
-			<sf:select path="servico">
+			<sf:select path="servicos">
 				<sf:options items="${ servicos }" itemValue="id" itemLabel="descricao" />
 			</sf:select>
 		</div>

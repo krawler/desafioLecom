@@ -36,6 +36,7 @@
 					<thead>
 						<tr>
 							<th width="40%">Cliente</th>
+							<th>Serviços</th>
 							<th>Data Inicio</th>
 							<th>Data Fim</th>
 							<th>Dias Restantes</th>
@@ -46,6 +47,10 @@
 						<c:forEach items="${ordens}" var="ordem">							
 							<tr>
 								<td>${ordem.cliente.nome}</td>
+								<td> 
+									</a> <a class="expand-link"> </a>
+									${fn:length(ordem.servicos)} serviços
+								</td>
 								<td><fmt:formatDate pattern="dd/MM/yyyy" value="${ordem.dataInicio}"/></td>
 								<td>${ordem.dataFim}</td>
 								<td class="center">${ordem.diasRestantes}</td>

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,8 +30,8 @@ public class OrdemServico {
 	private Long id;
 	@ManyToOne
 	private Cliente cliente;
-	@ManyToOne
-	private Servico servico;
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Servico> servicos;
 	@Temporal(value=TemporalType.DATE)
 	private Date dataInicio;
 	@Temporal(value=TemporalType.DATE)
@@ -41,12 +42,12 @@ public class OrdemServico {
 	public OrdemServico(){
 	}
 
-	public OrdemServico(Long id, Cliente cliente, Servico servico,
+	public OrdemServico(Long id, Cliente cliente, List<Servico> servicos,
 			Date dataInicio, Date dataFim) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
-		this.servico = servico;
+		this.servicos = servicos;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 	}
@@ -67,12 +68,12 @@ public class OrdemServico {
 		this.cliente = cliente;
 	}
 
-	public Servico getServico() {
-		return servico;
+	public List<Servico> getServicos() {
+		return servicos;
 	}
 
-	public void setServicos(Servico servico) {
-		this.servico = servico;
+	public void setServicos(List<Servico> servico) {
+		this.servicos = servico;
 	}
 
 	public Date getDataInicio() {

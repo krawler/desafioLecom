@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import br.com.ebdes.desafiolecom.dao.DAOOrdemServico;
 import br.com.ebdes.desafiolecom.entidades.Cliente;
 import br.com.ebdes.desafiolecom.entidades.OrdemServico;
+import br.com.ebdes.desafiolecom.entidades.Servico;
 
 @Primary
 @Repository
@@ -23,9 +24,24 @@ public class EMOrdemServico extends EMDAO<OrdemServico> implements DAOOrdemServi
 	}
 	
 	@Override
+	public List<OrdemServico> list(int offset, int max){
+		 List<OrdemServico> servicos = super.list(offset, max);
+		 for (OrdemServico ordemServico : servicos) {
+			  ordemServico.getServicos();
+			  for (Servico servico : ordemServico.getServicos()) {
+				   servico.getDescricao();
+			}
+		 }
+		 return servicos;
+	}
+	
+	@Override
 	public OrdemServico get(Long id){
 		OrdemServico os = super.get(id);
 		os.getCliente().getNome();
+		for(Servico servico : os.getServicos()){
+			servico.getDescricao();
+		}
 		return os;
 	}
 

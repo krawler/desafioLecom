@@ -2317,7 +2317,7 @@ $(document).ready(function () {
 	$('#dataFim').datepicker({ numberOfMonths: 3, showButtonPanel: true});
 	
 	$('#cliente').select2();
-	$('#servico').select2();
+	$('#servicos').select2();
 	
 	/*
 	var ajax_url = location.hash.replace(/^#/, '');

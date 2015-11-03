@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ebdes.desafiolecom.controladores.conversores.ClientePropertyEditor;
+import br.com.ebdes.desafiolecom.controladores.conversores.ServicoEditor;
 import br.com.ebdes.desafiolecom.controladores.conversores.ServicoPropertyEditor;
 import br.com.ebdes.desafiolecom.dao.DAOCliente;
 import br.com.ebdes.desafiolecom.dao.DAOOrdemServico;
@@ -46,7 +47,8 @@ public class OrdemServicoController {
 	@InitBinder  
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {  
         binder.registerCustomEditor(Cliente.class, new ClientePropertyEditor(daoCliente));
-        binder.registerCustomEditor(Servico.class, new ServicoPropertyEditor(daoServico));
+       // binder.registerCustomEditor(Servico.class, new ServicoPropertyEditor(daoServico));
+        //binder.registerCustomEditor(List.class, new ServicoEditor(List.class, true));
     }  
 	
 	@RequestMapping("ordem/listar")
@@ -78,7 +80,10 @@ public class OrdemServicoController {
 	@RequestMapping("ordem/visualizar/{id}")
 	public String visualizar(@PathVariable("id") Long id, Map<String, Object> model){
 		
-		model.put("ordemServico", daoOrdemServico.get(id));
+		OrdemServico os = daoOrdemServico.get(id);
+		List<Servico> servicos = os.getServicos();
+		model.put("ordemServico", os);
+		model.put("servicos", servicos);
 		
 		return "ordem/visualizar";
 	}
@@ -87,8 +92,6 @@ public class OrdemServicoController {
 	public String incluir(@Valid OrdemServico ordemServico, BindingResult result, HttpSession sessao){
 	
 		ordemServico.setDataInicio(new Date());
-		
-		System.out.println(ordemServico.getServico());
 		daoOrdemServico.persistir(ordemServico);
 		return "redirect:listar";
 	}
