@@ -88,6 +88,7 @@ public class OrdemServicoController {
 	
 		ordemServico.setDataInicio(new Date());
 		
+		System.out.println(ordemServico.getServico());
 		daoOrdemServico.persistir(ordemServico);
 		return "redirect:listar";
 	}

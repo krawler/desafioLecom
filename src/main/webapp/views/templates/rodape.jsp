@@ -6,10 +6,5 @@
 <script type="text/javascript" src="<c:url value="/recursos/plugins/select2/select2.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/recursos/js/devoops.js"/>"></script>
 
-<script>
-$(document).ready(function(){
-	LoadTimePickerScript(AllTimePickers);	 
-});
-</script>
 </body>
 </html>

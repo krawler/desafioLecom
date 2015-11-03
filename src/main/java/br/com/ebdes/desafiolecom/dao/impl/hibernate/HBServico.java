@@ -1,4 +1,4 @@
-package br.com.ebdes.desafiolecom.impl.dao.hibernate;
+package br.com.ebdes.desafiolecom.dao.impl.hibernate;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.ebdes.desafiolecom.dao.DAOServico;
 import br.com.ebdes.desafiolecom.entidades.Servico;
 
-@Primary
 @Repository
 public class HBServico extends HBDAO<Servico> implements DAOServico {
 

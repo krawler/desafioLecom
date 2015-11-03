@@ -1,13 +1,16 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
 
+<div class="col-xs-12 marginTop sem-padding-esquerda">
+	<a href="<c:url value="/cliente/cadastro"/>" class="btn btn-default sem-margin-esquerda">Novo Cliente</a>
+</div>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
 				<div class="box-name">					
-					<div class="col-xs-9"><span><h4 style="margin-top: 6px;">Listagem de Clientes</h4></span></div>
-					<a href="<c:url value="/cliente/cadastro"/>" class="btn btn-default">Novo Cliente</a>
+					<div class="col-xs-9"><span><h4 class="marginTop">Listagem de Clientes</h4></span></div>
+					
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -26,8 +29,8 @@
 				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-2">
 					<thead>
 						<tr>
-							<th width="50%">Nome</th>
-							<th>Endereço</th>
+							<th width="40%">Nome</th>
+							<th width="40%">Endereço</th>
 							<th>Ações</th>				
 						</tr>
 					</thead>

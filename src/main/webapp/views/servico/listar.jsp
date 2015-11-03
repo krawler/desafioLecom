@@ -27,7 +27,7 @@
 			<div class="box-header">
 				<div class="box-name">
 					<div class="col-xs-9">
-						<span class="center"><h4>Listagem de Serviços</h4></span>
+						<span class="center"><h4 class="marginTop">Listagem de Serviços</h4></span>
 					</div>
 				</div>
 				<div class="box-icons">
